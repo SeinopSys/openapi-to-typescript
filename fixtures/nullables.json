@@ -57,5 +57,38 @@
         "security": []
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "MoreNullables": {
+        "description": "More random values",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "e",
+          "h"
+        ],
+        "properties": {
+          "e": {
+            "type": "number"
+          },
+          "f": {
+            "type": "boolean"
+          },
+          "g": {
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "c1",
+              "c2"
+            ]
+          },
+          "h": {
+            "nullable": true,
+            "type": "string"
+          }
+        }
+      }
+    }
   }
 }

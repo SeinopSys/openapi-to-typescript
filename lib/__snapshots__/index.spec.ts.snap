@@ -13,7 +13,17 @@ export type GetListResult = any"
 `;
 
 exports[`GenerateTypings given the Nullables schema should match generated snapshot 1`] = `
-"export interface GetListRequest {
+"/**
+ * More random values
+ */
+export interface MoreNullables {
+  e: number;
+  f?: boolean;
+  g?: (\\"c1\\" | \\"c2\\") | null;
+  h: string | null;
+}
+
+export interface GetListRequest {
 }
 /**
  * Random values

@@ -95,6 +95,10 @@ describe('GenerateTypings', () => {
 			expect(generated).toContain('b?: boolean');
 			expect(generated).toContain('c?: ("c1" | "c2") | null');
 			expect(generated).toContain('d: string | null');
+			expect(generated).toContain('e: number');
+			expect(generated).toContain('f?: boolean');
+			expect(generated).toContain('g?: ("c1" | "c2") | null');
+			expect(generated).toContain('h: string | null');
 		});
 	});
 });
