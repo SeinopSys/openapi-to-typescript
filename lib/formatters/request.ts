@@ -29,7 +29,7 @@ export class RequestTypeFormatter extends Formatter<Operation> {
           const paramName = schema.type === 'array' && param.name.endsWith('[]')
             ? param.name.replace(/\[]$/, '')
             : param.name;
-          const optional = param.required === false ? '?' : '';
+          const optional = param.required !== true && param.in !== 'path' ? '?' : '';
           const nullable = param.nullable === true ? ' | null' : '';
           return `  ${paramName}${optional}: ${getSchemaName(schema, param.name) + nullable}`;
         }),
