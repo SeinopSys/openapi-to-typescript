@@ -17,7 +17,11 @@ export class RequestTypeFormatter extends Formatter<Operation> {
     const requestSchema = get(operation.operationObject, 'requestBody.content["application/json"].schema') as JSONSchema | undefined;
     const aliasedType = requestSchema && requestSchema.$ref && getSchemaNameByRef(requestSchema.$ref);
 
-    if (parameters.length === 0 && aliasedType) return `export type ${typeName} = ${aliasedType}`;
+    if (parameters.length === 0) {
+      if (aliasedType) return `export type ${typeName} = ${aliasedType}`;
+
+      return '';
+    }
 
     const startLine = aliasedType
       ? `export type ${typeName} = ${aliasedType} & {`

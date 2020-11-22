@@ -18,7 +18,7 @@
         "operationId": "GetList",
         "responses": {
           "200": {
-            "description": "Image data",
+            "description": "Json data",
             "content": {
               "application/json": {
                 "schema": {
@@ -27,7 +27,8 @@
                   "additionalProperties": false,
                   "required": [
                     "a",
-                    "d"
+                    "d",
+                    "f"
                   ],
                   "properties": {
                     "a": {
@@ -47,8 +48,64 @@
                     "d": {
                       "nullable": true,
                       "type": "string"
+                    },
+                    "e": {
+                      "nullable": true,
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/SomeOtherType"
+                        },
+                        {
+                          "$ref": "#/components/schemas/AndAnotherOne"
+                        }
+                      ]
+                    },
+                    "f": {
+                      "nullable": true,
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/SomeOtherType"
+                        },
+                        {
+                          "$ref": "#/components/schemas/AndAnotherOne"
+                        }
+                      ]
+                    },
+                    "g": {
+                      "nullable": true,
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/AndAnotherOne"
+                        }
+                      ]
+                    },
+                    "h": {
+                      "nullable": true,
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/SomeOtherType"
+                        }
+                      ]
                     }
                   }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/list2": {
+      "get": {
+        "operationId": "GetList2",
+        "responses": {
+          "200": {
+            "description": "Json data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvenMoreNullables"
                 }
               }
             }
@@ -80,10 +137,10 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "f"
+          "j"
         ],
         "properties": {
-          "e": {
+          "i": {
             "nullable": true,
             "oneOf": [
               {
@@ -94,7 +151,7 @@
               }
             ]
           },
-          "f": {
+          "j": {
             "nullable": true,
             "allOf": [
               {
@@ -102,6 +159,71 @@
               },
               {
                 "$ref": "#/components/schemas/AndAnotherOne"
+              }
+            ]
+          },
+          "k": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AndAnotherOne"
+              }
+            ]
+          },
+          "l": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SomeOtherType"
+              }
+            ]
+          }
+        }
+      },
+      "EvenMoreNullables": {
+        "description": "Even more random values",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "m",
+          "o"
+        ],
+        "properties": {
+          "m": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SomeOtherType"
+              },
+              {
+                "$ref": "#/components/schemas/AndAnotherOne"
+              }
+            ]
+          },
+          "n": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SomeOtherType"
+              },
+              {
+                "$ref": "#/components/schemas/AndAnotherOne"
+              }
+            ]
+          },
+          "o": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AndAnotherOne"
+              }
+            ]
+          },
+          "p": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SomeOtherType"
               }
             ]
           }

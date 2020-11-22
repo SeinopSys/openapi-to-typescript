@@ -21,12 +21,24 @@ export type AndAnotherOne = 30 | 60 | 90;
  * More random values
  */
 export interface MoreNullables {
-  e?: SomeOtherType | AndAnotherOne | null;
-  f: (SomeOtherType & AndAnotherOne) | null;
+  i?: SomeOtherType | AndAnotherOne | null;
+  j: (SomeOtherType & AndAnotherOne) | null;
+  k?: AndAnotherOne | null;
+  l?: SomeOtherType | null;
 }
 
-export interface GetListRequest {
+/**
+ * Even more random values
+ */
+export interface EvenMoreNullables {
+  m: SomeOtherType | AndAnotherOne | null;
+  n?: (SomeOtherType & AndAnotherOne) | null;
+  o: AndAnotherOne | null;
+  p?: SomeOtherType | null;
 }
+
+
+
 /**
  * Random values
  */
@@ -35,7 +47,13 @@ export interface GetListResult {
   b?: boolean;
   c?: (\\"c1\\" | \\"c2\\") | null;
   d: string | null;
+  e?: SomeOtherType | AndAnotherOne | null;
+  f: (SomeOtherType & AndAnotherOne) | null;
+  g?: AndAnotherOne | null;
+  h?: SomeOtherType | null;
 }
+
+export type GetList2Result = EvenMoreNullables;
 "
 `;
 
@@ -200,8 +218,7 @@ export interface Error {
 export interface ListPetsRequest {
   limit?: number
 }
-export interface CreatePetsRequest {
-}
+
 export interface ShowPetByIdRequest {
   petId: string
 }

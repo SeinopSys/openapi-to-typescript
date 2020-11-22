@@ -97,6 +97,16 @@ describe('GenerateTypings', () => {
 			expect(generated).toContain('d: string | null');
 			expect(generated).toContain('e?: SomeOtherType | AndAnotherOne | null');
 			expect(generated).toContain('f: (SomeOtherType & AndAnotherOne) | null');
+			expect(generated).toContain('g?: AndAnotherOne | null');
+			expect(generated).toContain('h?: SomeOtherType | null');
+			expect(generated).toContain('i?: SomeOtherType | AndAnotherOne | null');
+			expect(generated).toContain('j: (SomeOtherType & AndAnotherOne) | null');
+			expect(generated).toContain('k?: AndAnotherOne | null');
+			expect(generated).toContain('l?: SomeOtherType | null');
+			expect(generated).toContain('m: SomeOtherType | AndAnotherOne | null;');
+			expect(generated).toContain('n?: (SomeOtherType & AndAnotherOne) | null;');
+			expect(generated).toContain('o: AndAnotherOne | null;');
+			expect(generated).toContain('p?: SomeOtherType | null;');
 		});
 	});
 });
