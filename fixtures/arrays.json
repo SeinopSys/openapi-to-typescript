@@ -1,0 +1,118 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Arrays",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://example.com"
+    }
+  ],
+  "paths": {
+    "/list": {
+      "get": {
+        "operationId": "GetList",
+        "parameters": [
+          {
+            "name": "types[]",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "a",
+                  "b",
+                  "c",
+                  "d"
+                ]
+              },
+              "example": [
+                "a",
+                "c"
+              ]
+            }
+          },
+          {
+            "name": "aspectRatio",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "enum": [
+                  4,
+                  3,
+                  16,
+                  9
+                ]
+              },
+              "minItems": 2,
+              "maxItems": 2,
+              "example": [
+                16,
+                9
+              ]
+            }
+          },
+          {
+            "name": "widths",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 1,
+              "maxItems": 3,
+              "example": [
+                800,
+                1600,
+                1920
+              ]
+            }
+          },
+          {
+            "name": "heights",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 1,
+              "maxItems": 50,
+              "example": [
+                600,
+                900,
+                1080
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image data",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary",
+                  "example": ""
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  }
+}

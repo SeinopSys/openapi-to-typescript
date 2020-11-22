@@ -2,6 +2,25 @@
 
 exports[`GenerateTypings given an empty openapi schema should match generated snapshot 1`] = `""`;
 
+exports[`GenerateTypings given the Arrays schema should match generated snapshot 1`] = `
+"export interface GetListRequest {
+  types?: (\\"a\\" | \\"b\\" | \\"c\\" | \\"d\\")[]
+  aspectRatio: [(4 | 3 | 16 | 9), (4 | 3 | 16 | 9)]
+  widths?: [number] | [number, number] | [number, number, number]
+  heights?: [number, ...number[]]
+}
+export type GetListResult = any"
+`;
+
+exports[`GenerateTypings given the OptionalProperties schema should match generated snapshot 1`] = `
+"export interface GetOptionalPathRequest {
+  id: number
+  size?: 100 | 200 | 300
+  token?: string
+}
+export type GetOptionalPathResult = any"
+`;
+
 exports[`GenerateTypings given the Petstore Expanded schema FetchClientFormatter should match generated snapshot 1`] = `
 "export type Pet = NewPet & {
   id: number;

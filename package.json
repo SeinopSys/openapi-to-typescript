@@ -22,6 +22,7 @@
     "build": "rimraf dist && tsc",
     "cli": "ts-node ./lib/cli",
     "lint": "eslint '**/*.ts'",
+    "test:watch": "jest --watch",
     "test": "jest"
   },
   "dependencies": {
@@ -53,7 +54,7 @@
   "jest": {
     "globals": {
       "ts-jest": {
-        "tsconfig": "tsconfig.json"
+        "tsconfig": "tsconfig.test.json"
       }
     },
     "moduleFileExtensions": [
