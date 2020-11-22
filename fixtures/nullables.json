@@ -60,32 +60,50 @@
   },
   "components": {
     "schemas": {
+      "SomeOtherType": {
+        "type": "string",
+        "enum": [
+          "45",
+          "90"
+        ]
+      },
+      "AndAnotherOne": {
+        "type": "number",
+        "enum": [
+          30,
+          60,
+          90
+        ]
+      },
       "MoreNullables": {
         "description": "More random values",
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "e",
-          "h"
+          "f"
         ],
         "properties": {
           "e": {
-            "type": "number"
-          },
-          "f": {
-            "type": "boolean"
-          },
-          "g": {
             "nullable": true,
-            "type": "string",
-            "enum": [
-              "c1",
-              "c2"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SomeOtherType"
+              },
+              {
+                "$ref": "#/components/schemas/AndAnotherOne"
+              }
             ]
           },
-          "h": {
+          "f": {
             "nullable": true,
-            "type": "string"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SomeOtherType"
+              },
+              {
+                "$ref": "#/components/schemas/AndAnotherOne"
+              }
+            ]
           }
         }
       }

@@ -13,14 +13,16 @@ export type GetListResult = any"
 `;
 
 exports[`GenerateTypings given the Nullables schema should match generated snapshot 1`] = `
-"/**
+"export type SomeOtherType = \\"45\\" | \\"90\\";
+
+export type AndAnotherOne = 30 | 60 | 90;
+
+/**
  * More random values
  */
 export interface MoreNullables {
-  e: number;
-  f?: boolean;
-  g?: (\\"c1\\" | \\"c2\\") | null;
-  h: string | null;
+  e?: SomeOtherType | AndAnotherOne | null;
+  f: (SomeOtherType & AndAnotherOne) | null;
 }
 
 export interface GetListRequest {

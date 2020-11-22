@@ -6,12 +6,35 @@ import { SchemaObject } from './typings/openapi';
 
 export const fixNullsInSchema = (schema: JSONSchema): JSONSchema =>
 	mapDeep(schema, (value: SchemaObject) => {
-		if (!value.type || !value.nullable) return value;
+		if (!value.nullable) return value;
 
-		return {
-			...value,
-			type: [value.type, 'null'],
-		};
+		if (value.type) {
+			return {
+				...value,
+				type: [value.type, 'null'],
+			};
+		}
+
+		if (value.oneOf) {
+			return {
+				...value,
+				oneOf: [
+					...value.oneOf,
+					{ type: 'null' },
+				],
+			};
+		}
+
+		if (value.allOf) {
+			return {
+				oneOf: [
+					value,
+					{ type: 'null' },
+				],
+			};
+		}
+
+		return value;
 	});
 
 export const compileSchema = async (schema: JSONSchema, schemaName: string): Promise<string> => {
@@ -64,7 +87,7 @@ export const getSchemaName = (schema: JSONSchema, schemaName: string): string =>
 				}
 				if (typeof schema.minItems === 'number' && typeof schema.maxItems === 'number') {
 					if (schema.minItems <= schema.maxItems) {
-						const simpleFixedSizeArray =  schema.maxItems - schema.minItems < 5;
+						const simpleFixedSizeArray = schema.maxItems - schema.minItems < 5;
 						if (simpleFixedSizeArray) {
 							const defs = [];
 							for (let i = schema.minItems; i <= schema.maxItems; i++) {
