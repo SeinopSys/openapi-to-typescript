@@ -75,5 +75,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "np": {
+    "releaseDraft": false
   }
 }
