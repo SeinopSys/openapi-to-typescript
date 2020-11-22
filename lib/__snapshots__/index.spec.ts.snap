@@ -5,24 +5,24 @@ exports[`GenerateTypings given an empty openapi schema should match generated sn
 exports[`GenerateTypings given the Petstore Expanded schema FetchClientFormatter should match generated snapshot 1`] = `
 "export type Pet = NewPet & {
   id: number;
-  [k: string]: any;
+  [k: string]: unknown;
 };
 
 export interface NewPet {
   name: string;
   tag?: string;
-  [k: string]: any;
+  [k: string]: unknown;
 }
 
 export interface Error {
   code: number;
   message: string;
-  [k: string]: any;
+  [k: string]: unknown;
 }
 
 export interface FindPetsRequest {
-  tags: string[]
-  limit: number
+  tags?: string[]
+  limit?: number
 }
 export type AddPetRequest = NewPet
 export interface FindPetByIdRequest {
@@ -92,24 +92,24 @@ const DeletePet =
 exports[`GenerateTypings given the Petstore Expanded schema should match generated snapshot 1`] = `
 "export type Pet = NewPet & {
   id: number;
-  [k: string]: any;
+  [k: string]: unknown;
 };
 
 export interface NewPet {
   name: string;
   tag?: string;
-  [k: string]: any;
+  [k: string]: unknown;
 }
 
 export interface Error {
   code: number;
   message: string;
-  [k: string]: any;
+  [k: string]: unknown;
 }
 
 export interface FindPetsRequest {
-  tags: string[]
-  limit: number
+  tags?: string[]
+  limit?: number
 }
 export type AddPetRequest = NewPet
 export interface FindPetByIdRequest {
@@ -140,7 +140,7 @@ exports[`GenerateTypings given the Petstore schema should match generated snapsh
   id: number;
   name: string;
   tag?: string;
-  [k: string]: any;
+  [k: string]: unknown;
 }
 
 export type Pets = Pet[];
@@ -148,11 +148,11 @@ export type Pets = Pet[];
 export interface Error {
   code: number;
   message: string;
-  [k: string]: any;
+  [k: string]: unknown;
 }
 
 export interface ListPetsRequest {
-  limit: number
+  limit?: number
 }
 export interface CreatePetsRequest {
 }

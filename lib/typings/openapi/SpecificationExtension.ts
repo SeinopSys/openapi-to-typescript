@@ -4,45 +4,52 @@
 
 //  Specification Extensions
 //   ^x-
-export interface ISpecificationExtension {
+export interface ISpecificationExtension<T = any> {
     // Cannot constraint to "^x-" but can filter them later to access to them
-    [extensionName: string]: any
+    [extensionName: string]: T;
 }
 
-export class SpecificationExtension implements ISpecificationExtension {
+export class SpecificationExtension<T = any> {
     // Cannot constraint to "^x-" but can filter them later to access to them
-    [extensionName: string]: any;
+    protected extensions: Record<string, T> = {};
 
-    public static isValidExtension(extensionName: string) {
-        return /^x\-/.test(extensionName)
+    public static isValidExtension(extensionName: string): boolean {
+        return /^x-/.test(extensionName);
     }
 
-    public getExtension(extensionName: string): any {
+    public getExtension(extensionName: string): T | null {
         if (!SpecificationExtension.isValidExtension(extensionName)) {
             throw new Error("Invalid specification extension: '" +
-                        extensionName + "'. Extensions must start with prefix 'x-")
+                        extensionName + "'. Extensions must start with prefix 'x-");
         }
-        if (this[extensionName]) {
-            return this[extensionName]
+        if (this.extensions[extensionName]) {
+            return this.extensions[extensionName];
         }
-        return null
+        return null;
     }
-    public addExtension(extensionName: string, payload: any): void {
+
+    public addExtension(extensionName: string, payload: T): void {
         if (!SpecificationExtension.isValidExtension(extensionName)) {
             throw new Error("Invalid specification extension: '" +
-                        extensionName + "'. Extensions must start with prefix 'x-")
+                        extensionName + "'. Extensions must start with prefix 'x-");
         }
-        this[extensionName] = payload
+        this.extensions[extensionName] = payload;
+
+        Object.defineProperty(this, extensionName, {
+            writable: false,
+            configurable: false,
+            value: payload
+        });
     }
     public listExtensions(): string[] {
-        const res: string[] = []
-        for (const propName in this) {
-            if (this.hasOwnProperty(propName)) {
+        const res: string[] = [];
+        for (const propName in this.extensions) {
+            if (this.extensions.hasOwnProperty(propName)) {
                 if (SpecificationExtension.isValidExtension(propName)) {
-                    res.push(propName)
+                    res.push(propName);
                 }
             }
         }
-        return res
+        return res;
     }
 }

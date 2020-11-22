@@ -1,4 +1,5 @@
 import { SpecificationExtension } from './'
+import { get } from 'lodash'
 
 describe('SpecificationExtension', () => {
     it('addExtension() ok', () => {
@@ -6,7 +7,7 @@ describe('SpecificationExtension', () => {
         const extensionValue = { payload: 5 }
         sut.addExtension('x-name', extensionValue)
 
-        expect(sut['x-name']).toEqual(extensionValue)
+        expect(get(sut, 'x-name')).toEqual(extensionValue)
     })
     it('addExtension() invalid', (done) => {
         const sut = new SpecificationExtension()

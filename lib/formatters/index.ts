@@ -1,6 +1,6 @@
-export { RequestTypeFormatter } from './request'
-export { ResultTypeFormatter } from './response'
+export { RequestTypeFormatter } from './request';
+export { ResultTypeFormatter } from './response';
 
-export { SchemaFormatter } from './schema'
+export { SchemaFormatter } from './schema';
 
-export { FetchClientFormatter } from './fetch'
+export { FetchClientFormatter } from './fetch';

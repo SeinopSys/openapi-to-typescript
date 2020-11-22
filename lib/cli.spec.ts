@@ -1,4 +1,5 @@
 import execa from 'execa'
+import * as yargs from 'yargs';
 
 describe('openapi-to-typescript CLI', () => {
   it('should --help', async () => {
@@ -23,5 +24,8 @@ describe('openapi-to-typescript CLI', () => {
 })
 
 function runCLI(arg: string, opts?: any) {
-  return execa('ts-node', ['./lib/cli', ...arg.split(/\s+/g)], opts)
+  return execa('ts-node', ['./lib/cli', ...arg.split(/\s+/g)], {
+    ...opts,
+    env: { LC_ALL: 'en_US' },
+  })
 }

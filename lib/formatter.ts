@@ -1,7 +1,7 @@
 export abstract class Formatter<T> {
-  public abstract render(arg: T): Promise<string>
-  public async renderToString(operations: T[]) {
+  public abstract render(arg: T): Promise<string>;
+  public async renderToString(operations: T[]): Promise<string> {
     return Promise.all(operations.map(
-      (operation: T) => this.render(operation))).then((chunks) => chunks.join('\n'))
+      (operation: T) => this.render(operation))).then((chunks) => chunks.join('\n'));
   }
 }

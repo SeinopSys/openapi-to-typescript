@@ -9,11 +9,11 @@ Commands:
   cli generate  Write generated output to a file                       [default]
 
 Options:
-  --help         Show help                                             [boolean]
-  --version      Show version number                                   [boolean]
-  --input, -i    File to read from                                    [required]
-  --output, -o   Output name to write to
-  --server, -s   Server URL to use (defaults to the first one in the OpenAPI
-                 spec)
-  --verbose, -v                                                 [default: false]"
+      --help     Show help                                             [boolean]
+      --version  Show version number                                   [boolean]
+  -i, --input    File to read from                           [string] [required]
+  -o, --output   Output name to write to                                [string]
+  -s, --server   Server URL to use (defaults to the first one in the OpenAPI
+                 spec)                                                  [string]
+  -v, --verbose                                       [boolean] [default: false]"
 `;

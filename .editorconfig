@@ -1,0 +1,2 @@
+[*.ts.snap]
+trim_trailing_whitespace = false

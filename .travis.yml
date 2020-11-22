@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - 13 
+  - 14
+  - 13
   - 12
   - 10
 install:
@@ -9,5 +10,3 @@ script:
   - yarn build
   - yarn test
   - yarn lint
-after_success:
-  - npx semantic-release
