@@ -1,6 +1,6 @@
 # @seinopsys-forks/openapi-to-typescript
 
-[![NPM version](https://img.shields.io/npm/v/seinopsys-forks/openapi-to-typescript.svg)](https://www.npmjs.com/package/@seinopsys-forks/openapi-to-typescript)
+[![NPM version](https://img.shields.io/npm/v/@seinopsys-forks/openapi-to-typescript.svg)](https://www.npmjs.com/package/@seinopsys-forks/openapi-to-typescript)
 [![Build Status](https://travis-ci.com/SeinopSys/openapi-to-typescript.svg?branch=main)](https://travis-ci.com/github/SeinopSys/openapi-to-typescript)
 
 Generate TypeScript typings based on an OpenAPI 3 schema definition.
