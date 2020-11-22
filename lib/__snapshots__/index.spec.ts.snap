@@ -12,6 +12,21 @@ exports[`GenerateTypings given the Arrays schema should match generated snapshot
 export type GetListResult = any"
 `;
 
+exports[`GenerateTypings given the Nullables schema should match generated snapshot 1`] = `
+"export interface GetListRequest {
+}
+/**
+ * Random values
+ */
+export interface GetListResult {
+  a: number;
+  b?: boolean;
+  c?: (\\"c1\\" | \\"c2\\") | null;
+  d: string | null;
+}
+"
+`;
+
 exports[`GenerateTypings given the OptionalProperties schema should match generated snapshot 1`] = `
 "export interface GetOptionalPathRequest {
   id: number

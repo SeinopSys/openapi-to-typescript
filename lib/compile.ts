@@ -1,9 +1,22 @@
 import { JSONSchema, ResolverOptions } from 'json-schema-ref-parser';
 import { compile } from 'json-schema-to-typescript';
+import { mapDeep } from 'json-schema-to-typescript/dist/src/utils';
 import { INTERNAL_SCHEME } from './refs';
+import { SchemaObject } from './typings/openapi';
 
-export const compileSchema = async (schema: JSONSchema, schemaName: string): Promise<string> =>
-	compile(schema as any, schemaName, {
+export const fixNullsInSchema = (schema: JSONSchema): JSONSchema =>
+	mapDeep(schema, (value: SchemaObject) => {
+		if (!value.type || !value.nullable) return value;
+
+		return {
+			...value,
+			type: [value.type, 'null'],
+		};
+	});
+
+export const compileSchema = async (schema: JSONSchema, schemaName: string): Promise<string> => {
+	const nullFixedSchema = fixNullsInSchema(schema);
+	return compile(nullFixedSchema as any, schemaName, {
 		bannerComment: '',
 		$refOptions: {
 			resolve: {
@@ -15,6 +28,7 @@ export const compileSchema = async (schema: JSONSchema, schemaName: string): Pro
 			},
 		},
 	}).then(removeMagic);
+};
 
 const magicReader: ResolverOptions['read'] = def => {
 	const interfaceName = getSchemaNameByRef(def.url);
