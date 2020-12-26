@@ -13,7 +13,10 @@ export type GetListResult = any"
 `;
 
 exports[`GenerateTypings given the Nullables schema should match generated snapshot 1`] = `
-"export type NullableNumberSchema = number | null;
+"/**
+ * Example description for NullableNumberSchema
+ */
+export type NullableNumberSchema = number | null;
 
 export type SomeOtherType = \\"45\\" | \\"90\\";
 
@@ -23,9 +26,21 @@ export type AndAnotherOne = 30 | 60 | 90;
  * More random values
  */
 export interface MoreNullables {
+  /**
+   * Example description for MoreNullables.i
+   */
   i?: SomeOtherType | AndAnotherOne | null;
+  /**
+   * Example description for MoreNullables.j
+   */
   j: (SomeOtherType & AndAnotherOne) | null;
+  /**
+   * Example description for MoreNullables.k
+   */
   k?: AndAnotherOne | null;
+  /**
+   * Example description for MoreNullables.l
+   */
   l?: SomeOtherType | null;
 }
 
@@ -33,9 +48,21 @@ export interface MoreNullables {
  * Even more random values
  */
 export interface EvenMoreNullables {
+  /**
+   * Example description for EvenMoreNullables.m
+   */
   m: SomeOtherType | AndAnotherOne | null;
+  /**
+   * Example description for EvenMoreNullables.n
+   */
   n?: (SomeOtherType & AndAnotherOne) | null;
+  /**
+   * Example description for EvenMoreNullables.o
+   */
   o: AndAnotherOne | null;
+  /**
+   * Example description for EvenMoreNullables.p
+   */
   p?: SomeOtherType | null;
 }
 

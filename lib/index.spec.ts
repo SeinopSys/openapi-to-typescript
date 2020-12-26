@@ -91,6 +91,7 @@ describe('GenerateTypings', () => {
 		itShouldGenerateValidTypingsFromSchema(schema);
 		it('should output types with properly typed properties for request', async () => {
 			const generated = await GenerateTypings(schema);
+			expect(generated).toContain('Example description for NullableNumberSchema');
 			expect(generated).toContain('export type NullableNumberSchema = number | null');
 			expect(generated).toContain('a: number');
 			expect(generated).toContain('b?: boolean');
@@ -100,13 +101,21 @@ describe('GenerateTypings', () => {
 			expect(generated).toContain('f: (SomeOtherType & AndAnotherOne) | null');
 			expect(generated).toContain('g?: AndAnotherOne | null');
 			expect(generated).toContain('h?: SomeOtherType | null');
+			expect(generated).toContain('Example description for MoreNullables.i');
 			expect(generated).toContain('i?: SomeOtherType | AndAnotherOne | null');
+			expect(generated).toContain('Example description for MoreNullables.j');
 			expect(generated).toContain('j: (SomeOtherType & AndAnotherOne) | null');
+			expect(generated).toContain('Example description for MoreNullables.k');
 			expect(generated).toContain('k?: AndAnotherOne | null');
+			expect(generated).toContain('Example description for MoreNullables.l');
 			expect(generated).toContain('l?: SomeOtherType | null');
+			expect(generated).toContain('Example description for EvenMoreNullables.m');
 			expect(generated).toContain('m: SomeOtherType | AndAnotherOne | null;');
+			expect(generated).toContain('Example description for EvenMoreNullables.n');
 			expect(generated).toContain('n?: (SomeOtherType & AndAnotherOne) | null;');
+			expect(generated).toContain('Example description for EvenMoreNullables.o');
 			expect(generated).toContain('o: AndAnotherOne | null;');
+			expect(generated).toContain('Example description for EvenMoreNullables.p');
 			expect(generated).toContain('p?: SomeOtherType | null;');
 		});
 	});

@@ -119,6 +119,7 @@
     "schemas": {
       "NullableNumberSchema": {
         "type": "number",
+        "description": "Example description for NullableNumberSchema",
         "minimum": 1,
         "example": null,
         "nullable": true
@@ -147,6 +148,7 @@
         ],
         "properties": {
           "i": {
+            "description": "Example description for MoreNullables.i",
             "nullable": true,
             "oneOf": [
               {
@@ -158,6 +160,7 @@
             ]
           },
           "j": {
+            "description": "Example description for MoreNullables.j",
             "nullable": true,
             "allOf": [
               {
@@ -169,6 +172,7 @@
             ]
           },
           "k": {
+            "description": "Example description for MoreNullables.k",
             "nullable": true,
             "allOf": [
               {
@@ -177,6 +181,7 @@
             ]
           },
           "l": {
+            "description": "Example description for MoreNullables.l",
             "nullable": true,
             "oneOf": [
               {
@@ -196,6 +201,7 @@
         ],
         "properties": {
           "m": {
+            "description": "Example description for EvenMoreNullables.m",
             "nullable": true,
             "oneOf": [
               {
@@ -207,6 +213,7 @@
             ]
           },
           "n": {
+            "description": "Example description for EvenMoreNullables.n",
             "nullable": true,
             "allOf": [
               {
@@ -218,6 +225,7 @@
             ]
           },
           "o": {
+            "description": "Example description for EvenMoreNullables.o",
             "nullable": true,
             "allOf": [
               {
@@ -226,6 +234,7 @@
             ]
           },
           "p": {
+            "description": "Example description for EvenMoreNullables.p",
             "nullable": true,
             "oneOf": [
               {
