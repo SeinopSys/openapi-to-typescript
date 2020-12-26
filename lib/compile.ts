@@ -9,9 +9,13 @@ export const fixNullsInSchema = (schema: JSONSchema): JSONSchema =>
 		if (!value.nullable) return value;
 
 		if (value.type) {
+			const { id, ...restValue } = value as { id?: string };
 			return {
-				...value,
-				type: [value.type, 'null'],
+				id,
+				oneOf: [
+					restValue,
+					{ type: 'null' }
+				],
 			};
 		}
 

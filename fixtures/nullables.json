@@ -117,6 +117,12 @@
   },
   "components": {
     "schemas": {
+      "NullableNumberSchema": {
+        "type": "number",
+        "minimum": 1,
+        "example": null,
+        "nullable": true
+      },
       "SomeOtherType": {
         "type": "string",
         "enum": [

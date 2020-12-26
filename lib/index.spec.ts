@@ -91,6 +91,7 @@ describe('GenerateTypings', () => {
 		itShouldGenerateValidTypingsFromSchema(schema);
 		it('should output types with properly typed properties for request', async () => {
 			const generated = await GenerateTypings(schema);
+			expect(generated).toContain('export type NullableNumberSchema = number | null');
 			expect(generated).toContain('a: number');
 			expect(generated).toContain('b?: boolean');
 			expect(generated).toContain('c?: ("c1" | "c2") | null');
