@@ -5,11 +5,11 @@
 
 Generate TypeScript typings based on an OpenAPI 3 schema definition.
 
-# Install
+## Install
 
 Run `npm install @seinopsys-forks/openapi-to-typescript` or `yarn add @seinopsys-forks/openapi-to-typescript`
 
-# Usage in javascript
+### Usage in JavaScript
 
 ```javascript
 const { GenerateTypings } = require('@seinopsys-forks/openapi-to-typescript')
@@ -18,7 +18,7 @@ const generatedTypescriptCode = await GenerateTypings(openapiSchema)
 fs.writeFileSync('out.ts', generatedTypescriptCode)
 ```
 
-# CLI Usage
+## CLI Usage
 
 `yarn cli --help`
 
@@ -31,3 +31,7 @@ GenerateTypings(require('./fixtures/petstore.json')).then((generatedTypescriptCo
   fs.writeFileSync('out.ts', generatedTypescriptCode)
 })
 ```
+
+## Releasing new versions
+
+Run `npm run release`, it will lint and build the project before running [`np`](https://www.npmjs.com/package/np) to actually publish the new version. Follow the prompts to create the release. 
